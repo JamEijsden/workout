@@ -1,0 +1,15 @@
+<h2>Create schema</h2>
+
+<md-input-container class="text-center">
+  <input mdInput placeholder="Name"  #name>
+</md-input-container ><br>
+<md-input-container class="text-center">
+  <input mdInput placeholder="Description"  #desc>
+</md-input-container><br>
+
+<button md-button color="primary" (click)="dialogRef.close({name: name.value, description: desc.value})">
+  Create
+</button>
+<button md-button color="primary" (click)="dialogRef.close(null)">
+  Cancel
+</button>
