@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>
+        My Schemas
+      </h1>
+
+      <p>
+        List all schemas and create new ones from scratch or copy existing schema.
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-4" [ngStyle]="{'min-height':'80%'}">
+      <div class="col-sm-12" >
+        <md-card class="schema-list-item text-center" (click)="openModal()"
+          [style.background-color]="alternateColorList(1)">
+            <md-icon>add</md-icon>
+        </md-card>
+        <md-card class="schema-list-item"
+                 *ngFor="let schema of schemas; let i = index"
+                 [style.background-color]="alternateColorList(i)">
+          <md-card-header
+            (click)="setSelectedSchema(schema.id)">
+            <md-card-title>
+              {{schema.name}}
+            </md-card-title>
+            <md-card-subtitle>
+              {{schema.description}}
+            </md-card-subtitle>
+          </md-card-header>
+          <md-card-actions class="text-center">
+            <button md-button (click)="copySchema(schema)">Copy</button>
+            <button md-button (click)="deleteSchema(schema)">Delete</button>
+          </md-card-actions>
+
+        </md-card>
+      </div>
+
+
+    </div>
+    <div class="col-xs-8"  [ngStyle]="{'min-width':'60%'}">
+
+      <md-card *ngIf="selectedSchema!=null">
+        <md-card-title>
+          {{selectedSchema.name}}
+        </md-card-title>
+        <md-card-subtitle>
+          {{selectedSchema.description}}
+        </md-card-subtitle>
+        <md-card-actions>
+          <tr *ngFor="let user of selectedSchema.groups">
+            <button md-button>{{user.firstname}}</button>
+          </tr>
+        </md-card-actions>
+      </md-card>
+
+    </div>
+  </div>
+</div>
