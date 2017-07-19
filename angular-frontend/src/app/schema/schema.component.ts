@@ -36,6 +36,7 @@ export class SchemaComponent implements OnInit {
   private showCustomer: String = 'hidden';
   dialogRef: MdDialogRef<CreateSchemaDialogComponent>;
   selectedSchema = null;
+  colors = ['lightblue', 'lightgreen', 'lightpink', '#DDBDF!'];
 
   constructor(public auth: AuthService, public userService: UserDataService,
               public dialog: MdDialog, @Inject(DOCUMENT) doc: any, private router: Router,
@@ -80,7 +81,7 @@ export class SchemaComponent implements OnInit {
       });
   }
   public copySchema(schema) {
-    const new_schema = JSON.parse(JSON.stringify(schema));
+    const new_schema = schema as Schema;
     new_schema.name = new_schema.name + '_copy';
     delete new_schema.id;
     this.schemaService.addSchema(new_schema)
@@ -91,9 +92,7 @@ export class SchemaComponent implements OnInit {
       });
   }
   public alternateColorList(value) {
-    if ((value % 2) === 1)
-      return 'lightgrey';
-    else return 'white';
+    return this.colors[value % this.colors.length];
   }
 
   openModal() {

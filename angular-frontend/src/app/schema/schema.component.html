@@ -14,7 +14,8 @@
 
     <div class="col-sm-12" align="center">
       <md-card class="schema-list-item text-center" (click)="openModal()"
-        [style.background-color]="alternateColorList(1)">
+        [style.background-color]="'white'"
+        >
           <md-icon>add</md-icon>
       </md-card>
       <md-card class="schema-list-item"
@@ -23,7 +24,7 @@
         <md-card-header
           (click)="showSelected($event, i)">
           <md-card-title>
-            {{schema.name}}
+            <h5>{{schema.name}}</h5>
           </md-card-title>
           <md-card-subtitle>
             {{schema.description}}
@@ -32,7 +33,7 @@
         <md-card-content [@cardContent]="schemaVisibility[i].schemaId">
           Test test test
         </md-card-content>
-        <md-card-actions class="text-center">
+        <md-card-actions>
           <button md-button (click)="copySchema(schema)">Copy</button>
           <button md-button (click)="deleteSchema(schema)">Delete</button>
         </md-card-actions>
