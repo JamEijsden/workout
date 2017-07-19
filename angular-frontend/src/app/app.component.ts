@@ -1,4 +1,5 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import { GLOBAL } from './global.variables';
 import { AuthService } from './auth/auth.service';
 
 
@@ -7,17 +8,23 @@ import { AuthService } from './auth/auth.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
-  firstname = localStorage.getItem('firstname');
-  lastname = localStorage.getItem('lastname');
-  picture: string;
+export class AppComponent implements OnInit, OnDestroy {
+  _subscription: any;
+
+  picture = localStorage.getItem('picture');
   constructor(public auth: AuthService)  {
+    this._subscription = auth.picture.subscribe((value) => {
+      this.picture = value;
+    });
     auth.handleAuthentication();
-    this.picture = localStorage.getItem('picture');
+  }
+
+  ngOnDestroy() {
+    //prevent memory leak when component destroyed
+    this._subscription.unsubscribe();
   }
 
   ngOnInit() {
-
   }
 
 

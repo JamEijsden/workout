@@ -2,16 +2,19 @@ import { Injectable } from '@angular/core';
 import {MdSnackBar} from '@angular/material';
 import {Http, Headers, RequestOptions} from '@angular/http';
 import {Schema} from '../classes/schema';
+import {CookieService} from "app/services/cookie.service";
 
 
 @Injectable()
 export class SchemaDataService {
-  access_token = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqaW1taWUiLCJleHAiOjE0OTkxNzI5MTZ9.4RssJjxkjm-HLKC5h5eaKgVwJL2x-DcztBzJ-xorkOls5N-ip05wbLEKV-W8vj5_uoC4Sga-VJmZIfrvmIBZOw';
   url = 'http://localhost:8080/api';
-  constructor(private  http: Http,  public snackBar: MdSnackBar) { }
+  constructor(private  http: Http,  public snackBar: MdSnackBar, private cookies: CookieService) {
+
+  }
   addSchema(values) {
 
     const schema = new Schema();
+    const access_token = localStorage.getItem('access_token')
     schema.name = values.name;
     schema.description = values.description;
     const data = {
@@ -22,7 +25,7 @@ export class SchemaDataService {
     let options: RequestOptions;
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    headers.append('Authorization', this.access_token);
+    headers.append('Authorization', 'Bearer ' + access_token);
     options = new RequestOptions({headers: headers});
     return this.http
       .post(this.url + '/schema',
@@ -35,10 +38,11 @@ export class SchemaDataService {
 
   getCurrentUserSchemas() {
     let options: RequestOptions;
+    const access_token = localStorage.getItem('access_token')
     const user_id = localStorage.getItem('user_id');
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    headers.append('Authorization', this.access_token);
+    headers.append('Authorization', 'Bearer ' + access_token);
     options = new RequestOptions({headers: headers});
     return this.http
       .get(this.url + '/user/schema/' + user_id, {
@@ -49,8 +53,9 @@ export class SchemaDataService {
 
   deleteSchemaById(id) {
     let options: RequestOptions;
+    const access_token = localStorage.getItem('access_token')
     const headers = new Headers();
-    headers.append('Authorization', this.access_token);
+    headers.append('Authorization', 'Bearer ' + access_token);
     options = new RequestOptions({headers: headers});
     return this.http
       .delete(this.url + '/schema/' + id, {
@@ -61,10 +66,11 @@ export class SchemaDataService {
 
   getSchema(id) {
     let options: RequestOptions;
+    const access_token = localStorage.getItem('access_token')
     const user_id = localStorage.getItem('user_id');
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    headers.append('Authorization', this.access_token);
+    headers.append('Authorization', 'Bearer ' + access_token);
     options = new RequestOptions({headers: headers});
     return this.http
       .get(this.url + '/schema/' + id, {

@@ -47,13 +47,10 @@ public class ApiController {
 
     @RequestMapping(value="/user", method = RequestMethod.POST)
     public ResponseEntity<?> createUser(@RequestBody User user){
-        User u;
-        try{
+        User u =  userService.findByEmail(user.getEmail());;
+        if ( u == null )
             u = userService.create(user);
-        }catch(Exception e){
-            u = userService.findByEmail(user.getEmail());
-        }
-        return new ResponseEntity<>(u, HttpStatus.CREATED);
+        return new ResponseEntity<>(u, HttpStatus.OK);
     }
 
     @RequestMapping(value="/schema", method = RequestMethod.POST)
@@ -64,13 +61,13 @@ public class ApiController {
         s = schemaService.create(uu.getSchema());
         userService.addSchema(u, s);
 
-        return new ResponseEntity<>(s, HttpStatus.CREATED);
+        return new ResponseEntity<>(s, HttpStatus.OK);
     }
 
     @RequestMapping(value="/user/schema/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> getUserSchemas(@PathVariable("id") String id){
         User u = userService.findById(id);
-        return new ResponseEntity<>(u.getSchemas(), HttpStatus.CREATED);
+        return new ResponseEntity<>(u.getSchemas(), HttpStatus.OK);
     }
 
     @RequestMapping(value="/schema/{id}", method = RequestMethod.GET)

@@ -5,15 +5,18 @@
   <p>
     First page whe loading the app.
   </p>
-  <md-grid-list cols="4" rowHeight="100px">
-    <md-grid-tile
-      *ngFor="let tile of tiles"
-      [colspan]="tile.cols"
-      [rowspan]="tile.rows"
-      [style.background]="tile.color">
-      {{tile.text}}
-    </md-grid-tile>
-  </md-grid-list>
+  <md-card class="schema-list-item"
+           *ngFor="let schema of schemas; let i = index"
+           [style.background-color]="alternateColorList(i)">
+    <md-card-header>
+      <md-card-title>
+        {{schema.name}}
+      </md-card-title>
+      <md-card-subtitle>
+        {{schema.description}}
+      </md-card-subtitle>
+    </md-card-header>
+  </md-card>
 </div>
 
 

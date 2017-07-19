@@ -1,45 +1,47 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <h1>
+      <h1 align="center">
         My Schemas
       </h1>
 
-      <p>
+      <p align="center">
         List all schemas and create new ones from scratch or copy existing schema.
       </p>
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-4" [ngStyle]="{'min-height':'80%'}">
-      <div class="col-sm-12" >
-        <md-card class="schema-list-item text-center" (click)="openModal()"
-          [style.background-color]="alternateColorList(1)">
-            <md-icon>add</md-icon>
-        </md-card>
-        <md-card class="schema-list-item"
-                 *ngFor="let schema of schemas; let i = index"
-                 [style.background-color]="alternateColorList(i)">
-          <md-card-header
-            (click)="setSelectedSchema(schema.id)">
-            <md-card-title>
-              {{schema.name}}
-            </md-card-title>
-            <md-card-subtitle>
-              {{schema.description}}
-            </md-card-subtitle>
-          </md-card-header>
-          <md-card-actions class="text-center">
-            <button md-button (click)="copySchema(schema)">Copy</button>
-            <button md-button (click)="deleteSchema(schema)">Delete</button>
-          </md-card-actions>
 
-        </md-card>
-      </div>
+    <div class="col-sm-12" align="center">
+      <md-card class="schema-list-item text-center" (click)="openModal()"
+        [style.background-color]="alternateColorList(1)">
+          <md-icon>add</md-icon>
+      </md-card>
+      <md-card class="schema-list-item"
+               *ngFor="let schema of schemas; let i = index"
+               [style.background-color]="alternateColorList(i)">
+        <md-card-header
+          (click)="showSelected($event, i)">
+          <md-card-title>
+            {{schema.name}}
+          </md-card-title>
+          <md-card-subtitle>
+            {{schema.description}}
+          </md-card-subtitle>
+        </md-card-header>
+        <md-card-content [@cardContent]="schemaVisibility[i].schemaId">
+          Test test test
+        </md-card-content>
+        <md-card-actions class="text-center">
+          <button md-button (click)="copySchema(schema)">Copy</button>
+          <button md-button (click)="deleteSchema(schema)">Delete</button>
+        </md-card-actions>
 
-
+      </md-card>
     </div>
-    <div class="col-xs-8"  [ngStyle]="{'min-width':'60%'}">
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
 
       <md-card *ngIf="selectedSchema!=null">
         <md-card-title>

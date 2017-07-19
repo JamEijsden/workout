@@ -23,6 +23,9 @@ import { SchemaComponent } from './schema/schema.component';
 import {UserDataService} from 'app/services/user-data.service';
 import { CreateSchemaDialogComponent } from './create-schema-dialog/create-schema-dialog.component';
 import {SchemaDataService} from './services/schema-data.service';
+import {CookieService} from "./services/cookie.service";
+import {AuthComponent} from "./auth/auth.component";
+import {AuthGuard} from "./auth/auth-guard";
 
 @NgModule({
   declarations: [
@@ -30,6 +33,7 @@ import {SchemaDataService} from './services/schema-data.service';
     HomeComponent,
     CallbackComponent,
     NavigationComponent,
+    AuthComponent,
     AboutComponent,
     SchemaComponent,
     CreateSchemaDialogComponent
@@ -56,7 +60,7 @@ import {SchemaDataService} from './services/schema-data.service';
     RouterModule.forRoot(ROUTES, { useHash: true })
   ],
   entryComponents: [CreateSchemaDialogComponent],
-  providers: [AuthService, UserDataService, SchemaDataService],
+  providers: [AuthService, UserDataService, SchemaDataService, CookieService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

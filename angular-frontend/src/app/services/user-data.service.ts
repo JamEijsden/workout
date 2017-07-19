@@ -2,27 +2,31 @@ import { Injectable } from '@angular/core';
 import {User} from '../classes/user';
 import {Http, Response, Headers, RequestOptions} from '@angular/http';
 import {MdSnackBar} from '@angular/material';
+import {CookieService} from './cookie.service';
 
 @Injectable()
 export class UserDataService {
-  access_token = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqaW1taWUiLCJleHAiOjE0OTkxNzI5MTZ9.4RssJjxkjm-HLKC5h5eaKgVwJL2x-DcztBzJ-xorkOls5N-ip05wbLEKV-W8vj5_uoC4Sga-VJmZIfrvmIBZOw';
   url = 'http://localhost:8080/api';
-  constructor(private  http: Http) {
+  constructor(private  http: Http, private cookies: CookieService) {
+
+
   }
 
   // Simulate POST /users
   addUser() {
 
     const user = new User();
+    const access_token = localStorage.getItem('access_token');
+
     user.firstname = localStorage.getItem('firstname');
     user.lastname = localStorage.getItem('lastname');
     user.email = localStorage.getItem('email');
-
     let options: RequestOptions;
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    headers.append('Authorization', this.access_token);
+    headers.append('Authorization', 'Bearer ' + access_token);
     options = new RequestOptions({headers: headers});
+
     return this.http
       .post(this.url + '/user',
         JSON.stringify(user), {
@@ -51,7 +55,8 @@ export class UserDataService {
   getAllUsers() {
     let options: RequestOptions;
     const headers = new Headers();
-    headers.append('Authorization', this.access_token);
+    const access_token = localStorage.getItem('access_token');
+    headers.append('Authorization', 'Bearer ' + access_token);
     options = new RequestOptions({headers: headers});
     return this.http
       .get(this.url + '/user/all', {

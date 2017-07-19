@@ -8,15 +8,32 @@ import {DOCUMENT} from '@angular/platform-browser';
 import {Router} from '@angular/router';
 import {SchemaDataService} from '../services/schema-data.service';
 import {Schema} from '../classes/schema';
+import {animate, state, style, transition, trigger} from "@angular/animations";
 
 @Component({
   selector: 'app-schema',
   templateUrl: './schema.component.html',
-  styleUrls: ['./schema.component.css']
+  styleUrls: ['./schema.component.css'],
+  animations: [
+    trigger('cardContent', [
+      state('shown', style({
+        height: '*',
+        opacity: 1
+      })),
+      state('hidden', style({
+        height: '0',
+        opacity: 0
+      })),
+      transition('shown => hidden', animate('400ms ease-in-out')),
+      transition('hidden => shown', animate('400ms ease-in-out'))
+    ])
+  ]
 })
 export class SchemaComponent implements OnInit {
   users: User[];
   schemas: Schema[];
+  schemaVisibility = [];
+  private showCustomer: String = 'hidden';
   dialogRef: MdDialogRef<CreateSchemaDialogComponent>;
   selectedSchema = null;
 
@@ -37,14 +54,19 @@ export class SchemaComponent implements OnInit {
 
   }
 
-  public setSelectedSchema(schema_id) {
-    this.schemaService.getSchema(schema_id)
-      .subscribe(data => {
-        this.selectedSchema = data as Schema;
+  public showSelected($event, index) {
+    let i = 0;
+    this.schemaVisibility[index].schemaId = this.toggleVisibility(this.schemaVisibility[index].schemaId);
+    for (const schema of this.schemaVisibility){
+      if (i != index ) {
+        schema.schemaId = 'hidden';
+      }
+      i++;
+    }
+  }
 
-      }, error => {
-        console.log(JSON.stringify(error.json));
-      });
+  toggleVisibility(visibility) {
+    return (visibility == 'shown') ? 'hidden' : 'shown';
   }
 
   public deleteSchema(schema) {
@@ -73,6 +95,7 @@ export class SchemaComponent implements OnInit {
       return 'lightgrey';
     else return 'white';
   }
+
   openModal() {
     this.dialogRef = this.dialog.open(CreateSchemaDialogComponent);
 
@@ -103,6 +126,14 @@ export class SchemaComponent implements OnInit {
     this.schemaService.getCurrentUserSchemas()
       .subscribe(data => {
         this.schemas = data as Schema[];
+        for (const schema of this.schemas){
+          const schemaId = schema.id;
+          this.schemaVisibility.push(
+            {
+              schemaId: 'hidden'
+            }
+          );
+        }
       }, error => {
         console.log(JSON.stringify(error.json))
       });

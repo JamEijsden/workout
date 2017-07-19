@@ -1,8 +1,6 @@
-se\workout\RESTApp\util\JWTLoginFilter.class
 se\workout\RESTApp\WebSecurityConfig.class
 se\workout\RESTApp\controller\ApiController$BadRequestException.class
 se\workout\RESTApp\service\ExerciseService.class
-se\workout\RESTApp\util\JWTAuthenticationFilter.class
 se\workout\RESTApp\repository\SchemaRepository.class
 se\workout\RESTApp\domain\json\UpdateUser.class
 se\workout\RESTApp\domain\Session.class
@@ -15,7 +13,6 @@ se\workout\RESTApp\service\UserServiceImpl.class
 se\workout\RESTApp\repository\GroupRepository.class
 se\workout\RESTApp\domain\Schema.class
 se\workout\RESTApp\controller\ApiController$ResourceNotFoundException.class
-se\workout\RESTApp\service\TokenAuthenticationService.class
 se\workout\RESTApp\repository\UserRepository.class
 se\workout\RESTApp\service\ExerciseServiceImpl.class
 se\workout\RESTApp\service\SessionService.class
@@ -26,7 +23,6 @@ se\workout\RESTApp\service\SessionServiceImpl.class
 se\workout\RESTApp\util\CustomErrorType.class
 se\workout\RESTApp\RestAppApplication.class
 se\workout\RESTApp\controller\ApiController.class
-se\workout\RESTApp\domain\Auth.class
 se\workout\RESTApp\domain\Group.class
 se\workout\RESTApp\service\GroupService.class
 se\workout\RESTApp\AppConfig.class
