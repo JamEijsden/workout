@@ -4,3 +4,8 @@
 .btn-margin {
   margin-top: 7px
 }
+
+.weight-card-header-avatar {
+  background-image: url('app/images/weights.svg');
+  background-size: cover;
+}

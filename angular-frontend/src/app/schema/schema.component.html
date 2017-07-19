@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-xs-12">
       <h1 align="center">
-        My Schemas
+        Edit
       </h1>
 
       <p align="center">
@@ -13,7 +13,7 @@
   <div class="row">
 
     <div class="col-sm-12" align="center">
-      <md-card class="schema-list-item text-center" (click)="openModal()"
+      <md-card class="schema-list-item text-center" (click)="openCreateSchemaModal()"
         [style.background-color]="'white'"
         >
           <md-icon>add</md-icon>
@@ -21,20 +21,29 @@
       <md-card class="schema-list-item"
                *ngFor="let schema of schemas; let i = index"
                [style.background-color]="alternateColorList(i)">
-        <md-card-header
-          (click)="showSelected($event, i)">
-          <md-card-title>
+        <md-card-header align="left" (click)="showSelected($event, i, schema.id)">
+          <div md-card-avatar class="weight-card-header-avatar" ></div>
+          <md-card-title align="left">
             <h5>{{schema.name}}</h5>
           </md-card-title>
           <md-card-subtitle>
-            {{schema.description}}
+            <span>{{schema.description}}</span>
           </md-card-subtitle>
         </md-card-header>
-        <md-card-content [@cardContent]="schemaVisibility[i].schemaId">
-          Test test test
+        <md-card-content align="center" [@cardContent]="schemaVisibility[i].schemaId">
+
+          <md-input-container>
+            <input mdInput placeholder="Group name" #groupName>
+          </md-input-container>
+          <md-icon (click)="addGroup(groupName.value, schema.id)">add</md-icon>
+          <div
+            *ngFor="let group of visibleGroups">
+            {{group.name}}
+          </div>
         </md-card-content>
         <md-card-actions>
           <button md-button (click)="copySchema(schema)">Copy</button>
+          <button md-button (click)="openEditSchemaModal(schema)">Edit</button>
           <button md-button (click)="deleteSchema(schema)">Delete</button>
         </md-card-actions>
 

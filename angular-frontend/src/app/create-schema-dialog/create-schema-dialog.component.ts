@@ -7,7 +7,10 @@ import {MdDialogRef} from '@angular/material';
   styleUrls: ['./create-schema-dialog.component.css']
 })
 export class CreateSchemaDialogComponent implements OnInit {
-
+  id: string;
+  initName: string;
+  initDesc: string;
+  rated: number;
   constructor(public dialogRef: MdDialogRef<CreateSchemaDialogComponent>) { }
 
   ngOnInit() {

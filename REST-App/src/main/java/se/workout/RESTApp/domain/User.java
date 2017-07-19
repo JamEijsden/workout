@@ -1,7 +1,9 @@
 package se.workout.RESTApp.domain;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.PersistenceConstructor;
 import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,15 +22,18 @@ public class User {
     @Indexed(unique=true)
     private String email;
 
+    @DBRef
     private List<Schema> schemas = new ArrayList();
 
     public User(){
 
     }
 
-    public User(String firstname, String lastname) {
+    @PersistenceConstructor
+    public User(String firstname, String lastname, String email) {
         this.firstname = firstname;
         this.lastname = lastname;
+        this.email = email;
     }
 
     public String getId() {

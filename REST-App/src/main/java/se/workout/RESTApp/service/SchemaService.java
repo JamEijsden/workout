@@ -1,5 +1,6 @@
 package se.workout.RESTApp.service;
 
+import se.workout.RESTApp.domain.Group;
 import se.workout.RESTApp.domain.Schema;
 
 /**
@@ -12,6 +13,8 @@ public interface SchemaService {
     Schema create(Schema schema);
 
     void delete(String id);
+
+    Schema addGroup(Schema s, Group g);
 
 
 }

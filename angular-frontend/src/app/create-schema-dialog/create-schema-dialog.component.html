@@ -1,10 +1,10 @@
 <h2>Create schema</h2>
 <div align="center">
   <md-input-container>
-    <input mdInput placeholder="Name"  #name>
+    <input mdInput placeholder="Name" value="{{initName}}"#name>
   </md-input-container ><br>
   <md-input-container >
-    <input mdInput placeholder="Description"  #desc>
+    <input mdInput placeholder="Description" value="{{initDesc}}" #desc>
   </md-input-container><br>
 </div>
 <button md-button color="primary" (click)="dialogRef.close({name: name.value, description: desc.value})">

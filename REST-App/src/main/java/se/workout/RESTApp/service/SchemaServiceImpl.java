@@ -1,6 +1,7 @@
 package se.workout.RESTApp.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import se.workout.RESTApp.domain.Group;
 import se.workout.RESTApp.domain.Schema;
 import se.workout.RESTApp.repository.SchemaRepository;
 
@@ -28,5 +29,11 @@ public class SchemaServiceImpl implements SchemaService {
     @Override
     public void delete(String id) {
         schemaRepository.delete(id);
+    }
+
+    @Override
+    public Schema addGroup(Schema s, Group g) {
+        s.getGroups().add(g);
+        return schemaRepository.save(s);
     }
 }

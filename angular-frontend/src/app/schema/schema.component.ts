@@ -9,6 +9,8 @@ import {Router} from '@angular/router';
 import {SchemaDataService} from '../services/schema-data.service';
 import {Schema} from '../classes/schema';
 import {animate, state, style, transition, trigger} from "@angular/animations";
+import {GroupService} from "../services/group.service";
+
 
 @Component({
   selector: 'app-schema',
@@ -32,6 +34,7 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
 export class SchemaComponent implements OnInit {
   users: User[];
   schemas: Schema[];
+  visibleGroups = [];
   schemaVisibility = [];
   private showCustomer: String = 'hidden';
   dialogRef: MdDialogRef<CreateSchemaDialogComponent>;
@@ -40,7 +43,8 @@ export class SchemaComponent implements OnInit {
 
   constructor(public auth: AuthService, public userService: UserDataService,
               public dialog: MdDialog, @Inject(DOCUMENT) doc: any, private router: Router,
-              private schemaService: SchemaDataService,  public snackBar: MdSnackBar) {
+              private schemaService: SchemaDataService,  public snackBar: MdSnackBar,
+              private groupService: GroupService) {
 
     dialog.afterOpen.subscribe(() => {
       if (!doc.body.classList.contains('no-scroll')) {
@@ -55,15 +59,25 @@ export class SchemaComponent implements OnInit {
 
   }
 
-  public showSelected($event, index) {
+  public showSelected($event, index, id) {
     let i = 0;
-    this.schemaVisibility[index].schemaId = this.toggleVisibility(this.schemaVisibility[index].schemaId);
+
     for (const schema of this.schemaVisibility){
       if (i != index ) {
         schema.schemaId = 'hidden';
       }
       i++;
     }
+    this.groupService.getSchemaGroups(id)
+      .subscribe(
+        data => {
+          this.schemaVisibility[index].schemaId = this.toggleVisibility(this.schemaVisibility[index].schemaId);
+          if (this.schemaVisibility[index].schemaId != 'hidden')
+            this.visibleGroups = data;
+        }, error => {
+          console.log(error);
+        }
+      );
   }
 
   toggleVisibility(visibility) {
@@ -80,9 +94,12 @@ export class SchemaComponent implements OnInit {
         console.log(JSON.stringify(error.json));
       });
   }
-  public copySchema(schema) {
-    const new_schema = schema as Schema;
-    new_schema.name = new_schema.name + '_copy';
+  public copySchema(schema: Schema) {
+    const new_schema = new Schema();
+    new_schema.name = schema.name + '_copy';
+    new_schema.description = schema.description;
+    new_schema.groups = schema.groups;
+    this.schemaVisibility.push({shemaid: 'hidden'});
     delete new_schema.id;
     this.schemaService.addSchema(new_schema)
       .subscribe(data => {
@@ -91,20 +108,39 @@ export class SchemaComponent implements OnInit {
         this.schemas.push(data);
       });
   }
+
   public alternateColorList(value) {
     return this.colors[value % this.colors.length];
   }
 
-  openModal() {
+  openCreateSchemaModal() {
     this.dialogRef = this.dialog.open(CreateSchemaDialogComponent);
-
     this.dialogRef.afterClosed().subscribe(result => {
+      this.schemaVisibility.push({schemaId: 'hidden'});
       if (result != null) {
         this.schemaService.addSchema(result)
           .subscribe(data => {
             this.openSnackbar('Schema was successfully created');
             console.log(data);
             this.schemas.push(data);
+          });
+        this.dialogRef = null;
+      }
+    });
+  }
+
+  openEditSchemaModal(schema: Schema) {
+    this.dialogRef = this.dialog.open(CreateSchemaDialogComponent);
+    this.dialogRef.componentInstance.initName = schema.name;
+    this.dialogRef.componentInstance.initDesc = schema.description;
+    this.dialogRef.afterClosed().subscribe(result => {
+      if (result != null) {
+        schema.name = result.name;
+        schema.description = result.description;
+        this.schemaService.editSchema(schema)
+          .subscribe(data => {
+            this.openSnackbar('Schema was successfully updated');
+            console.log(data);
           });
         this.dialogRef = null;
       }
@@ -119,6 +155,16 @@ export class SchemaComponent implements OnInit {
     }
 
 
+  }
+
+  addGroup(name, sid) {
+    this.groupService.addGroup(name, sid)
+      .subscribe(
+        data => {
+          console.log(data);
+        }, error => {
+          console.log(error);
+    });
   }
 
   ngOnInit() {
@@ -136,13 +182,6 @@ export class SchemaComponent implements OnInit {
       }, error => {
         console.log(JSON.stringify(error.json))
       });
-
-    this.userService.getAllUsers()
-      .subscribe(data => {
-        this.users = data as User[];
-    }, error => {
-      console.log(JSON.stringify(error.json()));
-    });
   }
 
   openSnackbar(msg: string) {

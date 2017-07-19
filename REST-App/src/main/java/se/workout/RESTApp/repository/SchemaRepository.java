@@ -8,6 +8,4 @@ import se.workout.RESTApp.domain.Schema;
  */
 public interface SchemaRepository extends MongoRepository<Schema, String>{
     Schema findById(String id);
-
-
 }

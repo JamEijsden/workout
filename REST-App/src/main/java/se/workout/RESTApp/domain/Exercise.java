@@ -1,6 +1,7 @@
 package se.workout.RESTApp.domain;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -18,6 +19,8 @@ public class Exercise {
     private Integer best;
     private String name;
     private Date lastActivity;
+
+    @DBRef
     private List<Session> sessions = new ArrayList();
 
     public String getId() {

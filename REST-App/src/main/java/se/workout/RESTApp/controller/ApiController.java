@@ -5,9 +5,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
+import se.workout.RESTApp.domain.Group;
 import se.workout.RESTApp.domain.Schema;
 import se.workout.RESTApp.domain.User;
 import se.workout.RESTApp.domain.json.UpdateUser;
+import se.workout.RESTApp.service.GroupService;
 import se.workout.RESTApp.service.SchemaService;
 import se.workout.RESTApp.service.UserService;
 import se.workout.RESTApp.util.CustomErrorType;
@@ -26,6 +28,7 @@ public class ApiController {
 
     @Autowired UserService userService;
     @Autowired SchemaService schemaService;
+    @Autowired GroupService groupService;
 
     @RequestMapping(value="/user/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> getUser(@PathVariable("id") String id) {
@@ -53,7 +56,7 @@ public class ApiController {
         return new ResponseEntity<>(u, HttpStatus.OK);
     }
 
-    @RequestMapping(value="/schema", method = RequestMethod.POST)
+    @RequestMapping(value="/schema/add", method = RequestMethod.POST)
     public ResponseEntity<?> createSchema(@RequestBody UpdateUser uu){
         Schema s;
         User u = userService.findById(uu.getUserId());
@@ -61,6 +64,13 @@ public class ApiController {
         s = schemaService.create(uu.getSchema());
         userService.addSchema(u, s);
 
+        return new ResponseEntity<>(s, HttpStatus.OK);
+    }
+
+    @RequestMapping(value="/schema/edit", method = RequestMethod.POST)
+    public ResponseEntity<?> updateSchema(@RequestBody UpdateUser uu){
+        Schema s;
+        s = schemaService.create(uu.getSchema());
         return new ResponseEntity<>(s, HttpStatus.OK);
     }
 
@@ -78,9 +88,24 @@ public class ApiController {
 
     @RequestMapping(value="/schema/{sid}", method = RequestMethod.DELETE)
     public ResponseEntity<?> deleteSchema(@PathVariable("sid") String sid){
-        schemaService.delete(sid);
+        //schemaService.delete(sid);
+
         userService.removeSchema(sid);
         return new ResponseEntity<CustomErrorType>(new CustomErrorType("Successfully deleted schema"), HttpStatus.OK);
+    }
+
+    @RequestMapping(value="/group/add", method = RequestMethod.POST)
+    public ResponseEntity<?> createGroup(@RequestBody UpdateUser uu){
+        Group g = groupService.create(uu.getGroup());
+        Schema s = schemaService.findById(uu.getSchemaId());
+        s = schemaService.addGroup(s, g);
+        return new ResponseEntity<>(s, HttpStatus.OK);
+    }
+
+    @RequestMapping(value="/schema/groups/{sid}", method = RequestMethod.GET)
+    public ResponseEntity<?> getSchemaGroups(@PathVariable("sid") String sid){
+        Schema s = schemaService.findById(sid);
+        return new ResponseEntity<>(s.getGroups(), HttpStatus.OK);
     }
 
     @SuppressWarnings("serial")

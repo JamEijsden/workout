@@ -28,7 +28,27 @@ export class SchemaDataService {
     headers.append('Authorization', 'Bearer ' + access_token);
     options = new RequestOptions({headers: headers});
     return this.http
-      .post(this.url + '/schema',
+      .post(this.url + '/schema/add',
+        JSON.stringify(data), {
+          headers: headers
+        })
+      .map(response => response.json() as Schema);
+
+  }
+
+  editSchema(schema: Schema) {
+    const access_token = localStorage.getItem('access_token')
+    const data = {
+      userId: localStorage.getItem('user_id'),
+      schema: schema
+    };
+    let options: RequestOptions;
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', 'Bearer ' + access_token);
+    options = new RequestOptions({headers: headers});
+    return this.http
+      .post(this.url + '/schema/add',
         JSON.stringify(data), {
           headers: headers
         })

@@ -1,5 +1,6 @@
 package se.workout.RESTApp.service;
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -58,6 +59,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void removeSchema(String sid) {
-        mongoTemplate.updateFirst(new Query(), new Update().pull("schemas", Query.query(Criteria.where("_id").is(sid))), User.class);
+        //Query searchQuery = new Query(Criteria.where("id").is(sid));
+        //mongoTemplate.remove(searchQuery, Schema.class);
+        mongoTemplate.updateMulti(new Query(), new Update().pull("schemas", Query.query(Criteria.where("$id").is(new ObjectId(sid)))), User.class);
     }
 }

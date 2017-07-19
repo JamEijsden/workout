@@ -8,15 +8,16 @@
   <md-card class="schema-list-item"
            *ngFor="let schema of schemas; let i = index"
            [style.background-color]="alternateColorList(i)">
-    <md-card-header (click)="showSelected($event, i)">
-      <md-card-title>
+    <md-card-header align="left" (click)="showSelected($event, i)">
+      <div md-card-avatar class="weight-card-header-avatar" ></div>
+      <md-card-title align="left">
         <h5>{{schema.name}}</h5>
       </md-card-title>
       <md-card-subtitle>
-        {{schema.description}}
+        <span>{{schema.description}}</span>
       </md-card-subtitle>
     </md-card-header>
-    <md-card-content [@cardContent]="schemaVisibility[i].schemaId">
+    <md-card-content align="center" [@cardContent]="schemaVisibility[i].schemaId">
       Test test test
     </md-card-content>
   </md-card>

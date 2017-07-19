@@ -26,6 +26,7 @@ import {SchemaDataService} from './services/schema-data.service';
 import {CookieService} from "./services/cookie.service";
 import {AuthComponent} from "./auth/auth.component";
 import {AuthGuard} from "./auth/auth-guard";
+import {GroupService} from "./services/group.service";
 
 @NgModule({
   declarations: [
@@ -60,7 +61,7 @@ import {AuthGuard} from "./auth/auth-guard";
     RouterModule.forRoot(ROUTES, { useHash: true })
   ],
   entryComponents: [CreateSchemaDialogComponent],
-  providers: [AuthService, UserDataService, SchemaDataService, CookieService, AuthGuard],
+  providers: [AuthService, UserDataService, SchemaDataService, GroupService, CookieService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
