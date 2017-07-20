@@ -12,7 +12,7 @@ export class GroupService {
 
   }
 
-  getSchemaGroups(sid) {
+  getGroupsBySchema(sid) {
     const access_token = localStorage.getItem('access_token')
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
@@ -47,7 +47,16 @@ export class GroupService {
   }
 
   // Simulate GET /users/:id
-  getUserById(id: number) {
+  getGroupById(id) {
+    const access_token = localStorage.getItem('access_token')
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', 'Bearer ' + access_token);
+    return this.http
+      .get(this.url + '/group/' + id, {
+        headers: headers
+      })
+      .map(response => response.json() as Group);
   }
 
 

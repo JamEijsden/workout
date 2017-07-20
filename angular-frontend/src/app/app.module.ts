@@ -20,13 +20,14 @@ import { CallbackComponent } from './callback/callback.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { AboutComponent } from './about/about.component';
 import { SchemaComponent } from './schema/schema.component';
-import {UserDataService} from 'app/services/user-data.service';
+import {UserService} from 'app/services/user.service';
 import { CreateSchemaDialogComponent } from './create-schema-dialog/create-schema-dialog.component';
-import {SchemaDataService} from './services/schema-data.service';
-import {CookieService} from "./services/cookie.service";
-import {AuthComponent} from "./auth/auth.component";
-import {AuthGuard} from "./auth/auth-guard";
-import {GroupService} from "./services/group.service";
+import {SchemaService} from './services/schema.service';
+import {CookieService} from './services/cookie.service';
+import {AuthComponent} from './auth/auth.component';
+import {AuthGuard} from './auth/auth-guard';
+import {GroupService} from './services/group.service';
+import { GroupComponent } from './group/group.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import {GroupService} from "./services/group.service";
     AuthComponent,
     AboutComponent,
     SchemaComponent,
-    CreateSchemaDialogComponent
+    CreateSchemaDialogComponent,
+    GroupComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +63,7 @@ import {GroupService} from "./services/group.service";
     RouterModule.forRoot(ROUTES, { useHash: true })
   ],
   entryComponents: [CreateSchemaDialogComponent],
-  providers: [AuthService, UserDataService, SchemaDataService, GroupService, CookieService, AuthGuard],
+  providers: [AuthService, UserService, SchemaService, GroupService, CookieService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

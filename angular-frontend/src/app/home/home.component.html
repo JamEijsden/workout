@@ -8,7 +8,7 @@
   <md-card class="schema-list-item"
            *ngFor="let schema of schemas; let i = index"
            [style.background-color]="alternateColorList(i)">
-    <md-card-header align="left" (click)="showSelected($event, i)">
+    <md-card-header align="left" (click)="showSelected($event, i, schema.id)">
       <div md-card-avatar class="weight-card-header-avatar" ></div>
       <md-card-title align="left">
         <h5>{{schema.name}}</h5>
@@ -18,7 +18,13 @@
       </md-card-subtitle>
     </md-card-header>
     <md-card-content align="center" [@cardContent]="schemaVisibility[i].schemaId">
-      Test test test
+      <md-card
+        [style.background-color]="alternateColorList(i+1)"
+        *ngFor="let group of visibleGroups"
+        (click)="goToGroupView(group.id)"
+        class="group-list-item">
+        {{group.name}}
+      </md-card>
     </md-card-content>
   </md-card>
 </div>

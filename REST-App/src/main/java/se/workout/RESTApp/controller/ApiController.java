@@ -99,13 +99,19 @@ public class ApiController {
         Group g = groupService.create(uu.getGroup());
         Schema s = schemaService.findById(uu.getSchemaId());
         s = schemaService.addGroup(s, g);
-        return new ResponseEntity<>(s, HttpStatus.OK);
+        return new ResponseEntity<>(g, HttpStatus.OK);
     }
 
     @RequestMapping(value="/schema/groups/{sid}", method = RequestMethod.GET)
     public ResponseEntity<?> getSchemaGroups(@PathVariable("sid") String sid){
         Schema s = schemaService.findById(sid);
         return new ResponseEntity<>(s.getGroups(), HttpStatus.OK);
+    }
+
+    @RequestMapping(value="/group/{id}", method = RequestMethod.GET)
+    public ResponseEntity<?> getGroup(@PathVariable("id") String id){
+        Group g = groupService.findById(id);
+        return new ResponseEntity<>(g, HttpStatus.OK);
     }
 
     @SuppressWarnings("serial")

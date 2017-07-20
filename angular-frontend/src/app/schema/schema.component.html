@@ -33,13 +33,15 @@
         <md-card-content align="center" [@cardContent]="schemaVisibility[i].schemaId">
 
           <md-input-container>
-            <input mdInput placeholder="Group name" #groupName>
+            <input mdInput placeholder="Group name" value="{{newGroupName}}" (keyup.enter)="addGroup($event, groupName.value, schema.id)" #groupName>
           </md-input-container>
-          <md-icon (click)="addGroup(groupName.value, schema.id)">add</md-icon>
-          <div
-            *ngFor="let group of visibleGroups">
+          <md-icon (click)="addGroup($event, groupName.value, schema.id)">add</md-icon>
+          <md-card
+            [style.background-color]="alternateColorList(i+1)"
+            *ngFor="let group of visibleGroups"
+            class="group-list-item">
             {{group.name}}
-          </div>
+          </md-card>
         </md-card-content>
         <md-card-actions>
           <button md-button (click)="copySchema(schema)">Copy</button>

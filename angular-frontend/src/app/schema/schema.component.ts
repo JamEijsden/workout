@@ -1,15 +1,15 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {AuthService} from '../auth/auth.service';
-import {UserDataService} from '../services/user-data.service';
+import {UserService} from '../services/user.service';
 import {User} from '../classes/user';
 import {MdDialog, MdDialogRef, MdSnackBar} from '@angular/material';
 import {CreateSchemaDialogComponent} from '../create-schema-dialog/create-schema-dialog.component';
 import {DOCUMENT} from '@angular/platform-browser';
 import {Router} from '@angular/router';
-import {SchemaDataService} from '../services/schema-data.service';
+import {SchemaService} from '../services/schema.service';
 import {Schema} from '../classes/schema';
-import {animate, state, style, transition, trigger} from "@angular/animations";
-import {GroupService} from "../services/group.service";
+import {animate, state, style, transition, trigger} from '@angular/animations';
+import {GroupService} from '../services/group.service';
 
 
 @Component({
@@ -36,14 +36,15 @@ export class SchemaComponent implements OnInit {
   schemas: Schema[];
   visibleGroups = [];
   schemaVisibility = [];
+  newGroupName = '';
   private showCustomer: String = 'hidden';
   dialogRef: MdDialogRef<CreateSchemaDialogComponent>;
   selectedSchema = null;
   colors = ['lightblue', 'lightgreen', 'lightpink', '#DDBDF!'];
 
-  constructor(public auth: AuthService, public userService: UserDataService,
+  constructor(public auth: AuthService, public userService: UserService,
               public dialog: MdDialog, @Inject(DOCUMENT) doc: any, private router: Router,
-              private schemaService: SchemaDataService,  public snackBar: MdSnackBar,
+              private schemaService: SchemaService,  public snackBar: MdSnackBar,
               private groupService: GroupService) {
 
     dialog.afterOpen.subscribe(() => {
@@ -68,7 +69,7 @@ export class SchemaComponent implements OnInit {
       }
       i++;
     }
-    this.groupService.getSchemaGroups(id)
+    this.groupService.getGroupsBySchema(id)
       .subscribe(
         data => {
           this.schemaVisibility[index].schemaId = this.toggleVisibility(this.schemaVisibility[index].schemaId);
@@ -78,6 +79,10 @@ export class SchemaComponent implements OnInit {
           console.log(error);
         }
       );
+
+    if ( this.schemaVisibility[index].schemaId == 'hidden'){
+      this.visibleGroups = [];
+    }
   }
 
   toggleVisibility(visibility) {
@@ -157,11 +162,15 @@ export class SchemaComponent implements OnInit {
 
   }
 
-  addGroup(name, sid) {
+  addGroup($event, name, sid) {
+    this.newGroupName = '';
+
     this.groupService.addGroup(name, sid)
       .subscribe(
         data => {
           console.log(data);
+          this.visibleGroups.push(data);
+          this.openSnackbar('Group was successfully created');
         }, error => {
           console.log(error);
     });

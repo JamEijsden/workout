@@ -9,7 +9,7 @@ import {Observable} from 'rxjs/Observable';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import {UserDataService} from '../services/user-data.service';
+import {UserService} from '../services/user.service';
 import {CookieService} from '../services/cookie.service';
 import {Subject} from "rxjs/Subject";
 
@@ -26,7 +26,7 @@ export class AuthService {
     scope: 'openid profile email'
   });
 
-  constructor(public router: Router, private http: Http, private userService: UserDataService, private cookies: CookieService) {}
+  constructor(public router: Router, private http: Http, private userService: UserService, private cookies: CookieService) {}
 
   public login(): void {
     this.auth0.authorize();

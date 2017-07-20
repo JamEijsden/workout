@@ -5,6 +5,12 @@
   margin-top: 7px
 }
 
+.group-list-item {
+  width:45%;
+  margin:1px;
+  display: inline-block !important;
+}
+
 .weight-card-header-avatar {
   background-image: url('app/images/weights.svg');
   background-size: cover;

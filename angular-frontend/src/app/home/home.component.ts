@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './../auth/auth.service';
 import {Schema} from '../classes/schema';
-import {SchemaDataService} from '../services/schema-data.service';
-import {UserDataService} from '../services/user-data.service';
+import {SchemaService} from '../services/schema.service';
+import {UserService} from '../services/user.service';
 import {animate, state, style, transition, trigger} from '@angular/animations';
+import {GroupService} from '../services/group.service';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -33,20 +35,40 @@ export class HomeComponent implements OnInit {
     {text: 'Four', cols: 2, rows: 1, color: '#DDBDF1'},
   ];
   schemaVisibility = [];
+  visibleGroups = [];
   colors = ['lightblue', 'lightgreen', 'lightpink', '#DDBDF!'];
   schemas: Schema[] = [];
 
-  constructor(public auth: AuthService, private schemaService: SchemaDataService, private userService: UserDataService) {
+  constructor(public auth: AuthService, private schemaService: SchemaService, private userService: UserService,
+              private groupService: GroupService, private router: Router) {
   }
 
-  public showSelected($event, index) {
+  goToGroupView(groupId) {
+    console.log(groupId);
+    this.router.navigate(['group', groupId]);
+  }
+
+  public showSelected($event, index, id) {
     let i = 0;
-    this.schemaVisibility[index].schemaId = this.toggleVisibility(this.schemaVisibility[index].schemaId);
+
     for (const schema of this.schemaVisibility){
       if (i != index ) {
         schema.schemaId = 'hidden';
       }
       i++;
+    }
+    this.groupService.getGroupsBySchema(id)
+      .subscribe(
+        data => {
+          this.schemaVisibility[index].schemaId = this.toggleVisibility(this.schemaVisibility[index].schemaId);
+          if (this.schemaVisibility[index].schemaId != 'hidden')
+            this.visibleGroups = data;
+        }, error => {
+          console.log(error);
+        }
+      );
+    if ( this.schemaVisibility[index].schemaId == 'hidden'){
+      this.visibleGroups = [];
     }
   }
 

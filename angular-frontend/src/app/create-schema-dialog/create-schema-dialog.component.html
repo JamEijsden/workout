@@ -4,7 +4,7 @@
     <input mdInput placeholder="Name" value="{{initName}}"#name>
   </md-input-container ><br>
   <md-input-container >
-    <input mdInput placeholder="Description" value="{{initDesc}}" #desc>
+    <textarea mdInput placeholder="Description" value="{{initDesc}}" #desc></textarea>
   </md-input-container><br>
 </div>
 <button md-button color="primary" (click)="dialogRef.close({name: name.value, description: desc.value})">
