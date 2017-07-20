@@ -1,6 +1,7 @@
 package se.workout.RESTApp.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import se.workout.RESTApp.domain.Exercise;
 import se.workout.RESTApp.domain.Group;
 import se.workout.RESTApp.repository.GroupRepository;
 
@@ -23,5 +24,11 @@ public class GroupServiceImpl implements GroupService {
     @Override
     public Group create(Group group) {
         return groupRepository.save(group);
+    }
+
+    @Override
+    public Group addExercise(Group g, Exercise e) {
+        g.getExercises().add(e);
+        return groupRepository.save(g);
     }
 }

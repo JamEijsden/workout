@@ -1,6 +1,10 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {GroupService} from "../services/group.service";
+import {GroupService} from '../../services/group.service';
+import {CreateExerciseDialogComponent} from '../../dialogs/create-exercise-dialog/create-exercise-dialog.component';
+import {MdDialog, MdDialogRef} from "@angular/material";
+import {Exercise} from '../../classes/exercise';
+import {ExerciseService} from '../../services/exercise.service';
 
 @Component({
   selector: 'app-group',
@@ -11,8 +15,10 @@ export class GroupComponent implements OnInit, OnDestroy {
   id: string;
   title: string;
   exersices: any;
+  dialogRef: MdDialogRef<CreateExerciseDialogComponent>;
   private sub: any;
-  constructor(private route: ActivatedRoute, private groupService: GroupService) { }
+  constructor(public dialog: MdDialog, private route: ActivatedRoute, private groupService: GroupService,
+              private exerciseService: ExerciseService) { }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
@@ -20,10 +26,10 @@ export class GroupComponent implements OnInit, OnDestroy {
       this.groupService.getGroupById(this.id)
         .subscribe(
           data => {
-            console.log();
+            console.log(data);
             this.title = data.name;
           }, error => {
-            console.log();
+            console.log(error);
           }
         )
       // In a real app: dispatch action to load the details here.

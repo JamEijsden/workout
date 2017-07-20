@@ -1,0 +1,23 @@
+<div class="container">
+  <h1>
+    {{title}}
+  </h1>
+  <p>
+    First page whe loading the app.
+  </p>
+  <md-card (click)="openCreateExerciseModal()">
+    Create exercsie
+  </md-card>
+  <md-card
+    *ngFor="let exercise of exercises">
+      <md-card-header>
+        <md-card-title>
+          {{exercise.name}}
+        </md-card-title>
+        <md-card-subtitle>
+          Sets: {{exercise.sets}} Reps: {{exercise.reps}}
+        </md-card-subtitle>
+      </md-card-header>
+  </md-card>
+
+</div>

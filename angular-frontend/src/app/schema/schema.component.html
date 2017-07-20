@@ -36,9 +36,11 @@
             <input mdInput placeholder="Group name" value="{{newGroupName}}" (keyup.enter)="addGroup($event, groupName.value, schema.id)" #groupName>
           </md-input-container>
           <md-icon (click)="addGroup($event, groupName.value, schema.id)">add</md-icon>
+          <br>
           <md-card
             [style.background-color]="alternateColorList(i+1)"
             *ngFor="let group of visibleGroups"
+            (click)="goToEditGroupView(group.id)"
             class="group-list-item">
             {{group.name}}
           </md-card>

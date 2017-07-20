@@ -5,10 +5,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
+import se.workout.RESTApp.domain.Exercise;
 import se.workout.RESTApp.domain.Group;
 import se.workout.RESTApp.domain.Schema;
 import se.workout.RESTApp.domain.User;
 import se.workout.RESTApp.domain.json.UpdateUser;
+import se.workout.RESTApp.service.ExerciseService;
 import se.workout.RESTApp.service.GroupService;
 import se.workout.RESTApp.service.SchemaService;
 import se.workout.RESTApp.service.UserService;
@@ -29,6 +31,7 @@ public class ApiController {
     @Autowired UserService userService;
     @Autowired SchemaService schemaService;
     @Autowired GroupService groupService;
+    @Autowired ExerciseService exerciseService;
 
     @RequestMapping(value="/user/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> getUser(@PathVariable("id") String id) {
@@ -112,6 +115,20 @@ public class ApiController {
     public ResponseEntity<?> getGroup(@PathVariable("id") String id){
         Group g = groupService.findById(id);
         return new ResponseEntity<>(g, HttpStatus.OK);
+    }
+
+    @RequestMapping(value="/exercise/add", method = RequestMethod.POST)
+    public ResponseEntity<?> creatExercise(@RequestBody UpdateUser uu){
+        Exercise e = exerciseService.create(uu.getExercise());
+        Group g = groupService.findById(uu.getGroupId());
+        groupService.addExercise(g, e);
+        return new ResponseEntity<>(e, HttpStatus.OK);
+    }
+
+    @RequestMapping(value="/group/exercises/{gid}", method = RequestMethod.GET)
+    public ResponseEntity<?> getGroupExercises(@PathVariable("gid") String sid){
+        Group g = groupService.findById(sid);
+        return new ResponseEntity<>(g.getExercises(), HttpStatus.OK);
     }
 
     @SuppressWarnings("serial")

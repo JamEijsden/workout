@@ -21,13 +21,16 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { AboutComponent } from './about/about.component';
 import { SchemaComponent } from './schema/schema.component';
 import {UserService} from 'app/services/user.service';
-import { CreateSchemaDialogComponent } from './create-schema-dialog/create-schema-dialog.component';
+import { CreateSchemaDialogComponent } from './dialogs/create-schema-dialog/create-schema-dialog.component';
 import {SchemaService} from './services/schema.service';
 import {CookieService} from './services/cookie.service';
 import {AuthComponent} from './auth/auth.component';
 import {AuthGuard} from './auth/auth-guard';
 import {GroupService} from './services/group.service';
-import { GroupComponent } from './group/group.component';
+import { GroupComponent } from './group/view/group.component';
+import {CreateExerciseDialogComponent} from "./dialogs/create-exercise-dialog/create-exercise-dialog.component";
+import {ExerciseService} from "app/services/exercise.service";
+import {EditGroupComponent} from "./group/edit/edit.group.component";
 
 @NgModule({
   declarations: [
@@ -39,7 +42,9 @@ import { GroupComponent } from './group/group.component';
     AboutComponent,
     SchemaComponent,
     CreateSchemaDialogComponent,
-    GroupComponent
+    CreateExerciseDialogComponent,
+    GroupComponent,
+    EditGroupComponent
   ],
   imports: [
     BrowserModule,
@@ -62,8 +67,8 @@ import { GroupComponent } from './group/group.component';
     NgbModule.forRoot(),
     RouterModule.forRoot(ROUTES, { useHash: true })
   ],
-  entryComponents: [CreateSchemaDialogComponent],
-  providers: [AuthService, UserService, SchemaService, GroupService, CookieService, AuthGuard],
+  entryComponents: [CreateSchemaDialogComponent, CreateExerciseDialogComponent],
+  providers: [AuthService, UserService, SchemaService, GroupService, ExerciseService, CookieService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

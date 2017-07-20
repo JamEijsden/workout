@@ -1,5 +1,6 @@
 package se.workout.RESTApp.service;
 
+import se.workout.RESTApp.domain.Exercise;
 import se.workout.RESTApp.domain.Group;
 
 /**
@@ -10,5 +11,7 @@ public interface GroupService {
     Group findById(String id);
 
     Group create(Group group);
+
+    Group addExercise(Group g, Exercise e);
 
 }

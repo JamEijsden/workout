@@ -3,7 +3,7 @@ import {AuthService} from '../auth/auth.service';
 import {UserService} from '../services/user.service';
 import {User} from '../classes/user';
 import {MdDialog, MdDialogRef, MdSnackBar} from '@angular/material';
-import {CreateSchemaDialogComponent} from '../create-schema-dialog/create-schema-dialog.component';
+import {CreateSchemaDialogComponent} from '../dialogs/create-schema-dialog/create-schema-dialog.component';
 import {DOCUMENT} from '@angular/platform-browser';
 import {Router} from '@angular/router';
 import {SchemaService} from '../services/schema.service';
@@ -87,6 +87,11 @@ export class SchemaComponent implements OnInit {
 
   toggleVisibility(visibility) {
     return (visibility == 'shown') ? 'hidden' : 'shown';
+  }
+
+  goToEditGroupView(groupId) {
+    console.log(groupId);
+    this.router.navigate(['edit/group', groupId]);
   }
 
   public deleteSchema(schema) {

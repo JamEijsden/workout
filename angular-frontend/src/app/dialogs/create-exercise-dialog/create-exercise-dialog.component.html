@@ -1,0 +1,19 @@
+<h2>Create exercise</h2>
+<div align="center">
+  <md-input-container>
+    <input mdInput placeholder="Exercise name" #name>
+  </md-input-container ><br>
+  <md-input-container >
+    <input mdInput placeholder="Number of sets" #sets>
+  </md-input-container><br>
+  <md-input-container >
+    <input mdInput placeholder="Number of repetitions" #reps>
+  </md-input-container><br>
+
+</div>
+<button md-button color="primary" (click)="dialogRef.close({sets: sets.value, reps: reps.value, name: name.value})">
+  Create
+</button>
+<button md-button color="primary" (click)="dialogRef.close(null)">
+  Cancel
+</button>

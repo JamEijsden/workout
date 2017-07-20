@@ -22,16 +22,47 @@
       <file leaf-file-name="ApiController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/se/workout/RESTApp/controller/ApiController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
-              <caret line="100" column="41" lean-forward="true" selection-start-line="100" selection-start-column="41" selection-end-line="100" selection-end-column="41" />
+            <state relative-caret-position="417">
+              <caret line="130" column="25" lean-forward="true" selection-start-line="130" selection-start-column="25" selection-end-line="130" selection-end-column="25" />
               <folding>
                 <element signature="method#createSchema#0;class#ApiController#0" expanded="false" />
-                <element signature="method#updateSchema#0;class#ApiController#0" expanded="false" />
-                <element signature="method#getUserSchemas#0;class#ApiController#0" expanded="false" />
-                <element signature="method#getSchema#0;class#ApiController#0" expanded="false" />
-                <element signature="method#deleteSchema#0;class#ApiController#0" expanded="false" />
                 <element signature="method#BadRequestException#0;class#BadRequestException#0;class#ApiController#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GroupServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/se/workout/RESTApp/service/GroupServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="31" column="39" lean-forward="true" selection-start-line="31" selection-start-column="39" selection-end-line="31" selection-end-column="39" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AppConfig.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/se/workout/RESTApp/AppConfig.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+              <folding>
+                <element signature="e#504#505#0" expanded="true" />
+                <element signature="e#549#550#0" expanded="true" />
+                <element signature="e#606#607#0" expanded="true" />
+                <element signature="e#654#655#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Exercise.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/se/workout/RESTApp/domain/Exercise.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="19" column="24" lean-forward="true" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -112,8 +143,6 @@
         <option value="$PROJECT_DIR$/src/main/java/se/workout/RESTApp/repository/SessionRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/se/workout/RESTApp/service/SessionServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/se/workout/RESTApp/repository/ExerciseRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/se/workout/RESTApp/service/GroupServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/se/workout/RESTApp/service/GroupService.java" />
         <option value="$PROJECT_DIR$/src/main/java/se/workout/RESTApp/repository/GroupRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/se/workout/RESTApp/service/ExerciseServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/se/workout/RESTApp/service/ExerciseService.java" />
@@ -129,9 +158,11 @@
         <option value="$PROJECT_DIR$/src/main/java/se/workout/RESTApp/repository/SchemaRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/se/workout/RESTApp/service/UserServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/se/workout/RESTApp/domain/Schema.java" />
-        <option value="$PROJECT_DIR$/src/main/java/se/workout/RESTApp/AppConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/se/workout/RESTApp/service/SchemaService.java" />
         <option value="$PROJECT_DIR$/src/main/java/se/workout/RESTApp/service/SchemaServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/se/workout/RESTApp/AppConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/se/workout/RESTApp/service/GroupService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/se/workout/RESTApp/service/GroupServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/se/workout/RESTApp/controller/ApiController.java" />
       </list>
     </option>
@@ -930,16 +961,15 @@
       <workItem from="1500455596480" duration="23000" />
       <workItem from="1500466222007" duration="4173000" />
       <workItem from="1500483991529" duration="9002000" />
-      <workItem from="1500547089049" duration="1670000" />
+      <workItem from="1500547089049" duration="5042000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54233000" />
+    <option name="totallyTimeSpent" value="57605000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1216" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -959,7 +989,7 @@
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.42676312" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.42676312" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24791667" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1036,6 +1066,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
           <caret line="50" column="5" lean-forward="true" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
+          <folding>
+            <element signature="method#UserServiceImpl#0;class#UserServiceImpl#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1052,10 +1085,6 @@
           <caret line="3" column="43" lean-forward="false" selection-start-line="3" selection-start-column="43" selection-end-line="3" selection-end-column="43" />
           <folding>
             <element signature="method#createSchema#0;class#ApiController#0" expanded="false" />
-            <element signature="method#updateSchema#0;class#ApiController#0" expanded="false" />
-            <element signature="method#getUserSchemas#0;class#ApiController#0" expanded="false" />
-            <element signature="method#getSchema#0;class#ApiController#0" expanded="false" />
-            <element signature="method#deleteSchema#0;class#ApiController#0" expanded="false" />
             <element signature="method#BadRequestException#0;class#BadRequestException#0;class#ApiController#0" expanded="false" />
           </folding>
         </state>
@@ -1065,6 +1094,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="18" column="54" lean-forward="false" selection-start-line="18" selection-start-column="54" selection-end-line="18" selection-end-column="54" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1089,10 +1119,6 @@
           <caret line="3" column="43" lean-forward="true" selection-start-line="3" selection-start-column="43" selection-end-line="3" selection-end-column="43" />
           <folding>
             <element signature="method#createSchema#0;class#ApiController#0" expanded="false" />
-            <element signature="method#updateSchema#0;class#ApiController#0" expanded="false" />
-            <element signature="method#getUserSchemas#0;class#ApiController#0" expanded="false" />
-            <element signature="method#getSchema#0;class#ApiController#0" expanded="false" />
-            <element signature="method#deleteSchema#0;class#ApiController#0" expanded="false" />
             <element signature="method#BadRequestException#0;class#BadRequestException#0;class#ApiController#0" expanded="false" />
           </folding>
         </state>
@@ -1119,10 +1145,6 @@
           <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
           <folding>
             <element signature="method#createSchema#0;class#ApiController#0" expanded="false" />
-            <element signature="method#updateSchema#0;class#ApiController#0" expanded="false" />
-            <element signature="method#getUserSchemas#0;class#ApiController#0" expanded="false" />
-            <element signature="method#getSchema#0;class#ApiController#0" expanded="false" />
-            <element signature="method#deleteSchema#0;class#ApiController#0" expanded="false" />
             <element signature="method#BadRequestException#0;class#BadRequestException#0;class#ApiController#0" expanded="false" />
           </folding>
         </state>
@@ -1153,6 +1175,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
           <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+          <folding>
+            <element signature="method#UserServiceImpl#0;class#UserServiceImpl#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1197,24 +1222,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/se/workout/RESTApp/service/GroupService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="30" lean-forward="false" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/se/workout/RESTApp/repository/GroupRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="28" lean-forward="false" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/se/workout/RESTApp/service/GroupServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="12" column="5" lean-forward="false" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -1277,20 +1288,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/se/workout/RESTApp/domain/Exercise.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="22" column="4" lean-forward="false" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/se/workout/RESTApp/domain/Session.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="50" column="13" lean-forward="false" selection-start-line="50" selection-start-column="13" selection-end-line="50" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/se/workout/RESTApp/domain/User.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
@@ -1323,6 +1320,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="680">
           <caret line="75" column="31" lean-forward="false" selection-start-line="75" selection-start-column="31" selection-end-line="75" selection-end-column="31" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1330,19 +1328,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="17" column="22" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/se/workout/RESTApp/AppConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="25" column="22" lean-forward="false" selection-start-line="25" selection-start-column="22" selection-end-line="25" selection-end-column="22" />
-          <folding>
-            <element signature="e#407#408#0" expanded="false" />
-            <element signature="e#453#454#0" expanded="false" />
-            <element signature="e#504#505#0" expanded="false" />
-            <element signature="e#549#550#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1350,6 +1336,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="714">
           <caret line="63" column="8" lean-forward="false" selection-start-line="63" selection-start-column="8" selection-end-line="63" selection-end-column="8" />
+          <folding>
+            <element signature="method#UserServiceImpl#0;class#UserServiceImpl#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1383,16 +1372,62 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/se/workout/RESTApp/domain/Session.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="16" column="22" lean-forward="true" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
+          <folding>
+            <element signature="e#861#862#0" expanded="false" />
+            <element signature="e#888#889#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/se/workout/RESTApp/domain/Exercise.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="19" column="24" lean-forward="true" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/se/workout/RESTApp/AppConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding>
+            <element signature="e#504#505#0" expanded="true" />
+            <element signature="e#549#550#0" expanded="true" />
+            <element signature="e#606#607#0" expanded="true" />
+            <element signature="e#654#655#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/se/workout/RESTApp/service/GroupService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="42" lean-forward="false" selection-start-line="14" selection-start-column="42" selection-end-line="14" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/se/workout/RESTApp/service/GroupServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="31" column="39" lean-forward="true" selection-start-line="31" selection-start-column="39" selection-end-line="31" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/se/workout/RESTApp/controller/ApiController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="100" column="41" lean-forward="true" selection-start-line="100" selection-start-column="41" selection-end-line="100" selection-end-column="41" />
+        <state relative-caret-position="417">
+          <caret line="130" column="25" lean-forward="true" selection-start-line="130" selection-start-column="25" selection-end-line="130" selection-end-column="25" />
           <folding>
             <element signature="method#createSchema#0;class#ApiController#0" expanded="false" />
-            <element signature="method#updateSchema#0;class#ApiController#0" expanded="false" />
-            <element signature="method#getUserSchemas#0;class#ApiController#0" expanded="false" />
-            <element signature="method#getSchema#0;class#ApiController#0" expanded="false" />
-            <element signature="method#deleteSchema#0;class#ApiController#0" expanded="false" />
             <element signature="method#BadRequestException#0;class#BadRequestException#0;class#ApiController#0" expanded="false" />
           </folding>
         </state>

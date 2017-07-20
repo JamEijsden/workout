@@ -44,7 +44,6 @@ export class HomeComponent implements OnInit {
   }
 
   goToGroupView(groupId) {
-    console.log(groupId);
     this.router.navigate(['group', groupId]);
   }
 

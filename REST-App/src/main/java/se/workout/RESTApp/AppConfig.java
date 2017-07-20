@@ -26,4 +26,9 @@ public class AppConfig {
         return new GroupServiceImpl();
     }
 
+    @Bean
+    public ExerciseService exerciseService(){
+        return new ExerciseServiceImpl();
+    }
+
 }
